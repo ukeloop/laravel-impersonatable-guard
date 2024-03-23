@@ -1,0 +1,51 @@
+{
+    "name": "ukeloop/laravel-impersonatable-guard",
+    "description": "Laravel Impersonate Guard enables seamless user impersonation with enhanced security features for Laravel applications.",
+    "keywords": [
+        "laravel"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ukeloop"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/auth": "^10.0|^11.0",
+        "illuminate/contracts": "^10.0|^11.0",
+        "illuminate/http": "^10.0|^11.0",
+        "illuminate/support": "^10.0|^11.0",
+        "illuminate/queue": "^10.0|^11.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.8|^9.0",
+        "larastan/larastan": "^2.0",
+        "laravel/pint": "^1.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ukeloop\\ImpersonatableGuard\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ukeloop\\ImpersonatableGuard\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ukeloop\\ImpersonatableGuard\\ImpersonatableGuardServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "pint": "./vendor/bin/pint -v",
+        "phpstan": "phpstan analyse --memory-limit=1G",
+        "test": "phpunit"
+    }
+}

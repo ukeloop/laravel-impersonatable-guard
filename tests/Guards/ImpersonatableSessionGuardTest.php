@@ -18,7 +18,7 @@ use Ukeloop\ImpersonatableGuard\Tests\TestCase;
 class ImpersonatableSessionGuardTest extends TestCase
 {
     #[Test]
-    public function it_is_impersonatable(): void
+    public function it_can_impersonate(): void
     {
         Event::fake();
 
@@ -52,7 +52,7 @@ class ImpersonatableSessionGuardTest extends TestCase
     }
 
     #[Test]
-    public function it_is_impersonatable_with_original_user(): void
+    public function it_can_impersonate_with_original_user(): void
     {
         Event::fake();
 
@@ -95,7 +95,7 @@ class ImpersonatableSessionGuardTest extends TestCase
     }
 
     #[Test]
-    public function it_exit_impersonation(): void
+    public function it_can_exit_impersonation(): void
     {
         Event::fake();
 
@@ -128,7 +128,7 @@ class ImpersonatableSessionGuardTest extends TestCase
     }
 
     #[Test]
-    public function it_exit_impersonation_with_original_user(): void
+    public function it_can_exit_impersonation_with_original_user(): void
     {
         Event::fake();
 

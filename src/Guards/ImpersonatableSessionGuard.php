@@ -17,11 +17,9 @@ class ImpersonatableSessionGuard extends BaseSessionGuard implements Impersonata
 {
     protected ?AuthenticatableContract $originalUser = null;
 
-    protected bool $impersonated = false;
-
     public function impersonate(AuthenticatableContract $user): void
     {
-        $originalUser = $this->impersonated ? $this->originalUser() : $this->user();
+        $originalUser = $this->impersonated() ? $this->originalUser() : $this->user();
 
         $this->updateImpersonateSession($originalUser?->getAuthIdentifier());
 
@@ -34,7 +32,7 @@ class ImpersonatableSessionGuard extends BaseSessionGuard implements Impersonata
 
     public function onceImpersonate(AuthenticatableContract $user): void
     {
-        $originalUser = $this->impersonated ? $this->originalUser() : $this->user();
+        $originalUser = $this->impersonated() ? $this->originalUser() : $this->user();
 
         $this->setOriginalUser($originalUser);
 
@@ -57,8 +55,6 @@ class ImpersonatableSessionGuard extends BaseSessionGuard implements Impersonata
         $this->fireExitImpersonationEvent(user: $impersonatedUser, originalUser: $originalUser);
 
         $this->originalUser = null;
-
-        $this->impersonated = false;
     }
 
     protected function updateImpersonateSession(mixed $id): void
@@ -72,8 +68,6 @@ class ImpersonatableSessionGuard extends BaseSessionGuard implements Impersonata
     {
         $this->originalUser = $originalUser;
 
-        $this->impersonated = true;
-
         if ($this->originalUser) {
             $this->fireImpersonatedEvent(originalUser: $this->originalUser);
         }
@@ -83,12 +77,12 @@ class ImpersonatableSessionGuard extends BaseSessionGuard implements Impersonata
 
     public function originalUser(): ?AuthenticatableContract
     {
-        if (! $this->impersonated) {
-            return null;
-        }
-
         if (! is_null($this->originalUser)) {
             return $this->originalUser;
+        }
+
+        if (! $this->impersonated()) {
+            return null;
         }
 
         $id = $this->session->get($this->getOriginalUserName());
@@ -102,7 +96,7 @@ class ImpersonatableSessionGuard extends BaseSessionGuard implements Impersonata
 
     public function impersonated(): bool
     {
-        return $this->impersonated;
+        return $this->session->exists($this->getOriginalUserName());
     }
 
     /**

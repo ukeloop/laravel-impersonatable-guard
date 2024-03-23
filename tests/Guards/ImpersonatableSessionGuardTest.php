@@ -172,6 +172,29 @@ class ImpersonatableSessionGuardTest extends TestCase
     }
 
     #[Test]
+    public function it_can_set_set_original_user(): void
+    {
+        $guard = 'testbentch';
+
+        $impersonatableGuard = Auth::guard($guard);
+
+        $this->assertInstanceOf(ImpersonatableSessionGuard::class, $impersonatableGuard);
+
+        /** @var User $user */
+        $user = User::query()->forceCreate([
+            'name' => 'user',
+            'email' => 'user@localhost',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        ]);
+
+        $this->assertNull($impersonatableGuard->originalUser());
+
+        $impersonatableGuard->setOriginalUser($user);
+
+        $this->assertTrue($user->is($impersonatableGuard->originalUser()));
+    }
+
+    #[Test]
     public function it_inherits_base_guard_session(): void
     {
         $guard = 'testbentch';

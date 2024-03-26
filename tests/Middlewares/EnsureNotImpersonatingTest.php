@@ -14,7 +14,7 @@ use Ukeloop\ImpersonatableGuard\Tests\TestCase;
 class EnsureNotImpersonatingTest extends TestCase
 {
     #[Test]
-    public function it_ensure_guest_is_not_impersonation(): void
+    public function it_ensure_guest_is_not_impersonating(): void
     {
         $guard = 'testbentch';
 
@@ -34,7 +34,7 @@ class EnsureNotImpersonatingTest extends TestCase
     }
 
     #[Test]
-    public function it_ensure_user_is_not_impersonation(): void
+    public function it_ensure_user_is_not_impersonating(): void
     {
         $guard = 'testbentch';
 
@@ -92,7 +92,7 @@ class EnsureNotImpersonatingTest extends TestCase
     }
 
     #[Test]
-    public function it_protect_impersonation_with_originalUser(): void
+    public function it_protect_impersonation_with_original_user(): void
     {
         $guard = 'testbentch';
 

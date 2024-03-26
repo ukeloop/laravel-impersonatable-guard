@@ -172,7 +172,7 @@ class ImpersonatableSessionGuardTest extends TestCase
     }
 
     #[Test]
-    public function it_can_set_set_original_user(): void
+    public function it_can_set_original_user(): void
     {
         $guard = 'testbentch';
 

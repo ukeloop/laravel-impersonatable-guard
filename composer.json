@@ -1,6 +1,6 @@
 {
     "name": "ukeloop/laravel-impersonatable-guard",
-    "description": "Laravel Impersonate Guard enables seamless user impersonation with enhanced security features for Laravel applications.",
+    "description": "Laravel Impersonatable Guard enables seamless user impersonation with enhanced security features for Laravel applications.",
     "keywords": [
         "laravel"
     ],

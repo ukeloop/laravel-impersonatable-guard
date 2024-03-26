@@ -1,4 +1,4 @@
-# Laravel Impersonate Guard
+# Laravel Impersonatable Guard
 
 This is a guard implementation in Laravel for handling user impersonation. It extends Laravel's `SessionGuard` and provides additional methods for impersonation-related functionality.
 

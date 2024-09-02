@@ -30,7 +30,10 @@ class ImpersonatableGuardServiceProvider extends ServiceProvider
                 $name,
                 $provider,
                 $app['session.store'],
+                // rehashOnLogin: $app['config']->get('hashing.rehash_on_login', true),
             );
+
+            $guard->setRehashOnLogin($app['config']->get('hashing.rehash_on_login', true));
 
             if (method_exists($guard, 'setCookieJar')) {
                 $guard->setCookieJar($app['cookie']);

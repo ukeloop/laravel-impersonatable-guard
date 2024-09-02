@@ -26,7 +26,7 @@ class EnsureNotImpersonatingTest extends TestCase
 
         $this->assertFalse($impersonatableGuard->impersonated());
 
-        $middleware = new EnsureNotImpersonating();
+        $middleware = new EnsureNotImpersonating;
 
         $middleware->handle(new Request, function () {
             $this->assertTrue(true);
@@ -53,7 +53,7 @@ class EnsureNotImpersonatingTest extends TestCase
 
         $this->assertFalse($impersonatableGuard->impersonated());
 
-        $middleware = new EnsureNotImpersonating();
+        $middleware = new EnsureNotImpersonating;
 
         $middleware->handle(new Request, function () {
             $this->assertTrue(true);
@@ -82,7 +82,7 @@ class EnsureNotImpersonatingTest extends TestCase
 
         $this->assertTrue($impersonatableGuard->impersonated());
 
-        $middleware = new EnsureNotImpersonating();
+        $middleware = new EnsureNotImpersonating;
 
         $this->expectException(AuthorizationException::class);
 
@@ -121,7 +121,7 @@ class EnsureNotImpersonatingTest extends TestCase
 
         $this->assertTrue($impersonatableGuard->impersonated());
 
-        $middleware = new EnsureNotImpersonating();
+        $middleware = new EnsureNotImpersonating;
 
         $this->expectException(AuthorizationException::class);
 

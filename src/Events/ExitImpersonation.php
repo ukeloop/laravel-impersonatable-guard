@@ -13,6 +13,5 @@ class ExitImpersonation
         public string $guard,
         public ?AuthenticatableContract $user,
         public ?AuthenticatableContract $originalUser,
-    ) {
-    }
+    ) {}
 }

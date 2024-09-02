@@ -186,4 +186,14 @@ class ImpersonatableSessionGuard extends BaseSessionGuard implements Impersonata
     {
         return 'remember_'.$this->name.'_'.sha1(BaseSessionGuard::class);
     }
+
+    /**
+     * Set the rehashOnLogin property for Laravel 11 and above.
+     */
+    public function setRehashOnLogin(bool $rehashOnLogin): void
+    {
+        if (property_exists($this, 'rehashOnLogin')) {
+            $this->rehashOnLogin = $rehashOnLogin;
+        }
+    }
 }

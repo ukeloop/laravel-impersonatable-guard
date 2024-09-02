@@ -12,6 +12,5 @@ class Impersonated
     public function __construct(
         public string $guard,
         public AuthenticatableContract $originalUser,
-    ) {
-    }
+    ) {}
 }

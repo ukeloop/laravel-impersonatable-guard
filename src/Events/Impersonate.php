@@ -13,6 +13,5 @@ class Impersonate
         public string $guard,
         public AuthenticatableContract $user,
         public ?AuthenticatableContract $originalUser,
-    ) {
-    }
+    ) {}
 }

@@ -24,25 +24,24 @@ class ImpersonatableGuardServiceProvider extends ServiceProvider
     protected function configureGuard(): void
     {
         $this->app->make('auth')->extend('impersonatable.session', function ($app, $name, $config): ImpersonatableSessionGuard {
-            $provider = $app['auth']->createUserProvider($config['provider'] ?? null);
-
             $guard = new ImpersonatableSessionGuard(
                 $name,
-                $provider,
+                $app['auth']->createUserProvider($config['provider'] ?? null),
                 $app['session.store'],
-                // rehashOnLogin: $app['config']->get('hashing.rehash_on_login', true),
+                rehashOnLogin: $app['config']->get('hashing.rehash_on_login', true),
             );
 
-            $guard->setRehashOnLogin($app['config']->get('hashing.rehash_on_login', true));
-
+            // @phpstan-ignore function.alreadyNarrowedType
             if (method_exists($guard, 'setCookieJar')) {
                 $guard->setCookieJar($app['cookie']);
             }
 
+            // @phpstan-ignore function.alreadyNarrowedType
             if (method_exists($guard, 'setDispatcher')) {
                 $guard->setDispatcher($app['events']);
             }
 
+            // @phpstan-ignore function.alreadyNarrowedType
             if (method_exists($guard, 'setRequest')) {
                 $guard->setRequest($app->refresh('request', $guard, 'setRequest'));
             }

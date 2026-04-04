@@ -13,14 +13,14 @@
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/auth": "^11.0|^12.0",
-        "illuminate/contracts": "^11.0|^12.0",
-        "illuminate/http": "^11.0|^12.0",
-        "illuminate/support": "^11.0|^12.0",
-        "illuminate/queue": "^11.0|^12.0"
+        "illuminate/auth": "^v12.0|^13.0",
+        "illuminate/contracts": "^v12.0|^13.0",
+        "illuminate/http": "^v12.0|^13.0",
+        "illuminate/support": "^v12.0|^13.0",
+        "illuminate/queue": "^v12.0|^13.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^9.0|^10.0",
+        "orchestra/testbench": "^10.0|^11.0",
         "larastan/larastan": "^3.0",
         "laravel/pint": "^1.13"
     },

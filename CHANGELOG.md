@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v3.0.0
+
+- Supported Laravel 13.
+
 ## v2.0.0
 
 - Supported Laravel 12.
